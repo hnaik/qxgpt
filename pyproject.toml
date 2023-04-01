@@ -1,0 +1,44 @@
+[tool.black]
+line-length = 79
+skip-string-normalization = true
+target-version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | contrib
+  )/
+)
+'''
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q -s"
+testpaths = [
+    "tests"
+]
+
+[tool.pylint.master]
+init-hook = "import sys; import torch; sys.path.append('.')"
+jobs = 4
+
+[tool.pylint.basic]
+good-names = "G,_G"
+
+[tool.pylint.imports]
+ignored-modules = "torch"
+known-third-party= "torch"
+
+[build-system]
+requires = ["setuptools", "wheel"]
