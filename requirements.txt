@@ -1,3 +1,6 @@
+black
+coloredlogs
 jupyterlab
-openai
+openai[datalib]
+pandas
 
